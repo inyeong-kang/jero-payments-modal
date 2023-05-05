@@ -1,4 +1,4 @@
-import { Dispatch } from 'react';
+import { Dispatch, useRef } from 'react';
 
 import { _Backdrop, _Container } from './styled';
 
@@ -8,7 +8,7 @@ interface ModalProps {
 }
 
 export default function JeroModal({ onModalClose, children }: ModalProps) {
-  // const BackDropRef = useRef<HTMLDivElement>(null);
+  const BackDropRef = useRef<HTMLDivElement>(null);
 
   function closeModal() {
     onModalClose(false);
@@ -28,7 +28,7 @@ export default function JeroModal({ onModalClose, children }: ModalProps) {
 */
   return (
     <>
-      <_Backdrop />
+      <_Backdrop ref={BackDropRef} />
       <_Container>{children}</_Container>
     </>
   );
