@@ -13,7 +13,7 @@ export default function JeroModal({ onModalClose, children }: ModalProps) {
   function closeModal() {
     onModalClose(false);
   }
-
+  /*
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       if (e.target === BackDropRef.current) {
@@ -25,10 +25,10 @@ export default function JeroModal({ onModalClose, children }: ModalProps) {
 
     return () => document.removeEventListener('click', handler);
   }, [BackDropRef, closeModal]);
-
+*/
   return (
     <>
-      <_Backdrop ref={BackDropRef} />
+      <_Backdrop />
       <_Container>{children}</_Container>
     </>
   );
