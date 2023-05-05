@@ -1,4 +1,4 @@
-import { Dispatch, useRef } from 'react';
+import { Dispatch, useRef, useEffect } from 'react';
 
 import { _Backdrop, _Container } from './styled';
 
@@ -13,7 +13,7 @@ export default function JeroModal({ onModalClose, children }: ModalProps) {
   function closeModal() {
     onModalClose(false);
   }
-  /*
+
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       if (e.target === BackDropRef.current) {
@@ -25,7 +25,7 @@ export default function JeroModal({ onModalClose, children }: ModalProps) {
 
     return () => document.removeEventListener('click', handler);
   }, [BackDropRef, closeModal]);
-*/
+
   return (
     <>
       <_Backdrop ref={BackDropRef} />
