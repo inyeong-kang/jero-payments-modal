@@ -1,4 +1,4 @@
-import { Dispatch, useRef, useEffect, RefObject } from 'react';
+import { Dispatch, useRef, useEffect } from 'react';
 
 import { _Backdrop, _Container } from './styled';
 
@@ -14,21 +14,17 @@ export default function JeroModal({ onModalClose, children }: ModalProps) {
     onModalClose(false);
   }
 
-  const useClickEvent = (ref: RefObject<HTMLElement>, callback: () => void) => {
-    useEffect(() => {
-      const handler = (e: MouseEvent) => {
-        if (e.target === ref.current) {
-          callback();
-        }
-      };
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (e.target === BackDropRef.current) {
+        closeModal();
+      }
+    };
 
-      document.addEventListener('click', handler);
+    document.addEventListener('click', handler);
 
-      return () => document.removeEventListener('click', handler);
-    }, [ref, callback]);
-  };
-
-  useClickEvent(BackDropRef, closeModal);
+    return () => document.removeEventListener('click', handler);
+  }, [BackDropRef, closeModal]);
 
   return (
     <>
