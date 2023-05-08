@@ -1,46 +1,95 @@
-# Getting Started with Create React App
+# jero-payments-modal
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> A library to design a bottom sheet(or modal) built in React & TypeScript
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+- You can use this library when designing a bottom sheet.
+- Just import and use it!
 
-### `npm start`
+## Version
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Latest version: 0.1.0 (updated in 2023.05.06)
+- Major package version
+  - "react": "^18.2.0",
+  - "react-dom": "^18.2.0",
+  - "react-scripts": "^5.0.1",
+  - "styled-components": "^5.3.10",
+  - "typescript": "^4.5.5"
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## How to Use
 
-### `npm test`
+### Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```Shell
+npm i jero-payments-modal
+```
 
-### `npm run build`
+### Import
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+import { JeroModal } from 'jero-payments-modal';
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Usage Example
 
-### `npm run eject`
+- Modal when Closed
+  <img src="./img/closedModal.png"/>
+- Modal when Opened
+  <img src="./img/openModal.png"/>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```JavaScript
+import React, { useState } from 'react';
+import './App.css';
+import { JeroModal } from 'jero-payments-modal';
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+function App() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  return (
+    <div className='App'>
+      <button onClick={() => setIsModalOpen(true)}>하이</button>
+      {isModalOpen && <JeroModal onModalClose={setIsModalOpen}>끼룩</JeroModal>}
+    </div>
+  );
+}
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+export default App;
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
 
-## Learn More
+## Component & Props
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Component
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+📦lib
+ ┣ 📂JeroModal
+ ┃ ┣ 📜index.tsx
+ ┃ ┗ 📜styled.tsx
+ ┗ 📜index.tsx
+```
+
+### Props
+
+```TypeScript
+interface ModalProps {
+  onModalClose: Dispatch<React.SetStateAction<boolean>>;
+  children: JSX.Element;
+}
+
+```
+
+| props name   | props type                              |
+| ------------ | --------------------------------------- |
+| onModalClose | Dispatch<React.SetStateAction<boolean>> |
+| children     | JSX.Element                             |
+
+## Source
+
+- [Github Code](https://github.com/inyeong-kang/jero-payments-modal)
+- [npm.js](https://www.npmjs.com/package/jero-payments-modal)
+
+## Developer
+
+- [jero-kang](https://github.com/inyeong-kang)
